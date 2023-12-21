@@ -3,12 +3,15 @@
 
 <div class="row">
   <div class="col">
-    <app-dbz-list [characterList]="characters"></app-dbz-list>
+    <app-dbz-list
+      [characterList]="dbzService.characters"
+      (deleteCharacterById)="dbzService.deleteCharacterById($event)"
+    ></app-dbz-list>
   </div>
 
   <div class="col">
     <app-dbz-add-character
-      (onNewCharacter)="onNewCharacter($event)"
+      (onNewCharacter)="dbzService.onNewCharacter($event)"
     ></app-dbz-add-character>
   </div>
 </div>

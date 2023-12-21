@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
@@ -7,7 +7,6 @@ import { Character } from '../../interfaces/character.interface';
   styleUrl: './list.component.css',
 })
 export class ListComponent {
-
   @Input()
   public characterList: Character[] = [
     {
@@ -16,5 +15,10 @@ export class ListComponent {
     },
   ];
 
-
+  @Output()
+  public deleteCharacterById: EventEmitter<string> = new EventEmitter();
+  onDeleteCharacter(id?: string): void {
+    if (!id) return;
+    this.deleteCharacterById.emit(id);
+  }
 }
